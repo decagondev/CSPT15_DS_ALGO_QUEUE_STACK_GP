@@ -1,0 +1,1 @@
+# let's implement a stack using a linked list
