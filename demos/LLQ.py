@@ -24,26 +24,29 @@ class Queue:
 
     def dequeue(self):
         # check if queue is empty
-        if self.front is not None:
+        if not self.is_empty:
             # keep copy of old front
             old_front = self.front
             # set new front
             self.front = old_front.next
 
         # check if the queue is now empty
-        if self.front is None:
+        if self.is_empty():
             # make sure rear is also None
             self.rear = None
         
         return old_front
+    
+    def is_empty(self):
+        return self.front == None
 
 
 # test
 
-# q = Queue()
-# print(q.is_empty()) # => True
-# q.enqueue(12)
-# print(q.is_empty()) # => False
-# q.dequeue()
-# print(q.is_empty()) # => True
+q = Queue()
+print(q.is_empty()) # => True
+q.enqueue(12)
+print(q.is_empty()) # => False
+q.dequeue()
+print(q.is_empty()) # => True
 

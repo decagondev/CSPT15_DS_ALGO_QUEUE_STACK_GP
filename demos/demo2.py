@@ -21,11 +21,30 @@ class Stack:
 class QueueTwoStacks:
     def __init__(self):
         # Your code here
+        # stack for inward 'self.in_stack' / 'bob'
+        self.in_stack = Stack()
+        # stack for outward 'self.out_stack' / 'dave'
+        self.out_stack = Stack()
 
         
     def enqueue(self, item):
-        # Your code here
+        # push item on to in stack
+        self.in_stack.push(item)
 
 
     def dequeue(self):
-        # Your code here
+        # check if the out stack is empty
+        if len(self.out_stack.data) == 0:
+            # move items from in stack to out stack, reversing the order
+            while len(self.in_stack.data) > 0:
+                # pop our top item with the newest data
+                newest_data = self.in_stack.pop()
+                # push our newest data on to the out stack
+                self.out_stack.push(newest_data)
+            
+            # if out stack is still empty, raise an error
+            if len(self.out_stack.data) == 0:
+                raise IndexError("Can not dequeue from an empty queue!")
+        
+        # return the top of our out stack
+        return self.out_stack.pop()
