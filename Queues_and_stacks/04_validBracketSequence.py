@@ -30,3 +30,12 @@ true if sequence is a valid bracket sequence and false otherwise.
 """
 def validBracketSequence(sequence):
     
+    stack = []
+    pair = { "(": ")", "[": "]", "{": "}" }
+    
+    for char in sequence:
+        if char in pair:
+            stack.append(char)
+        elif len(stack) == 0 or pair[stack.pop()] != char:
+            return False
+    return len(stack) == 0

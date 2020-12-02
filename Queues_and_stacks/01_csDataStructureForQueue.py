@@ -6,4 +6,10 @@ B - String
 C - Static Array
 D - Dynamic Array
 
+
+answer is: 
+
+
+Linked list
+
 """
